@@ -161,9 +161,9 @@
                         $('.progress').hide();
                         var siteUrl = window.location.href;
                         $('.email_send').show();
-                        $('.linktext').val('<p>' + siteUrl + 'storage/' + response.path + '</p>');
+                        $('.linktext').val(  siteUrl + 'storage/' + response.path );
                     } else {
-                        $('.messages').html('<p>' + response.message + '</p>');
+                        $('.messages').html( response.message) ;
                     }
                 },
                 error: function (xhr, status, error) {

@@ -58,12 +58,36 @@ Route::get('/email-form', function () {
 
 Route::post('/send-email', function (Request $request) {
     $email = $request->email;
-    $message = $request->message;
-    $mail = mail($email,'File Link',$message);
-    if($mail){
-        return redirect()->back()->with('message', 'Email sent successfully!');
-    }else{
-        return "Email not sent successfully!";
-    }
+
+    
+    
+    // Assuming you have the download link stored in a variable called $downloadLink
+$downloadLink = $request->message;
+
+// HTML content for the email
+$message = '<html>
+<head>
+    <title>Download Link</title>
+</head>
+<body>
+    <h1>Hello!</h1>
+    <p>Click the button below to download the file:</p>
+    <a href="'.$downloadLink.'" target="_blank" style="padding: 10px 20px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Download Now</a>
+</body>
+</html>';
+
+$headers = "From: sender@uploadeasy.salebanks.com\r\n";
+$headers .= "Reply-To: sender@uploadeasy.salebanks.com\r\n";
+$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+
+$email = $email; 
+
+$mailSent = mail($email, 'File Link', $message, $headers);
+
+if ($mailSent) {
+    return redirect()->back()->with('message', 'Email sent successfully!');
+} else {
+    return "Email not sent successfully!";
+}
 
 })->name('send.email');

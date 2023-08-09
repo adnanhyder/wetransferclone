@@ -19,7 +19,16 @@
     <!-- All Styles -->
     <link href="assets/css/app.css" rel="stylesheet"/>
     <!--Custom User CSS File -->
-
+<style>
+    .email_send label {
+	display: block;
+	margin: 20px 0px;
+}
+.email_send .block {
+	margin-top: 15px;
+	margin: ;
+}
+</style>
 <body class="app sidebar-mini frontend-body ">
 <!-- Page -->
 <div class="page">
@@ -134,8 +143,9 @@
                                         <br>
                                         <label for="message">Message:</label>
                                         <textarea class="linktext" name="message" rows="4" required></textarea>
-                                        <br>
-                                        <button type="submit">Send Email</button>
+                                        <div class="block">
+                                        <button class=" action-button register-button pl-5 pr-5" type="submit">Send Email</button>
+                                        </div>
                                     </form>
                                     @if (session('message'))
                                         <div>
